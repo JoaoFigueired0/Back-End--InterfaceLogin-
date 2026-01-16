@@ -22,11 +22,20 @@ app.post("/users", async (req, res) => {
   try {
     const newUser = new User(req.body);
     await newUser.save();
-    res.json(newUser);
+
+    return res.status(201).json({
+      message: "Usuário criado com sucesso",
+      user: newUser
+    });
+
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    return res.status(500).json({
+      message: "Erro ao criar usuário",
+      error: err.message
+    });
   }
 });
+
 
 // Porta
 const PORT = process.env.PORT || 3000;
