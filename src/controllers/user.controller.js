@@ -1,4 +1,5 @@
-const User = require("../models/user.model")
+import { User } from "./src/models/user.model.js";
+
 
 exports.create = async (req, res) => {
   const user = await User.create(req.body)
